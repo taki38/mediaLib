@@ -2,6 +2,8 @@
 
 Cette mission est réalisé pour MEDIA LIB dans le cadre d'un test de recrutement.
 
+Technos utilisés: Symfony | Twig | Bootstrap | Mysql  
+
 #Clonez le projet $ git clone https://github.com/taki38/mediaLib.git
 
 #Allez dans le répertoire $ cd mediaLib
