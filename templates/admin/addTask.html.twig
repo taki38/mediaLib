@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container p-5">
+
+        <h1>Ajouter une tache</h1>
+        {{ form(taskForm,{'attr': {'novalidate': 'novalidate'}}) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lib Media{% endblock %}
+
+{% block body %}
+
+    {% if not is_granted('ROLE_USER')  %}
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Apllication avec authenthification et attribution des taches</h4>
+        <p class="mb-0">Cette mission est réalisé pour MEDIA LIB dans le cadre d'un test de recrutement.
+            Aprés avoir chargé les Fixtures Vous pouvez vous connecter avec ces identifiants :
+        Email : takieddinesehailia@gmail.com
+            Mot de passe : azerty
+        </p>
+    </div>
+    {% endif %}
+
+    <div class="container p-5">
+        <div class="col-12">
+            <img class=img-responsive src='https://lib-media.com/wp-content/uploads/2021/10/sans_ombre1.png' style=width:100%/>
+        </div>
+
+
+        {% if is_granted('ROLE_ADMIN') %}
+
+
+
+            <a href="{{ path ('display_users') }}" class="btn btn-secondary">Utilisateurs</a>
+            <a href="{{ path ('display_tasks') }}" class="btn btn-success">Liste des taches</a>
+            <a href="{{ path ('add_task') }}" class="btn btn-info">Ajouter tache</a>
+
+
+
+        {% elseif is_granted('ROLE_USER') %}
+
+            <a href="{{ path ('display_user_tasks') }}" class="btn btn-info">Mes taches</a>
+
+
+        {% else %}
+          <a href="{{ path ('app_login') }}" class="btn btn-warning">Se connecter</a>
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path ('app_home') }}">Lib Media</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ path ('app_home') }}">Accueil
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path ('display_users') }}">Utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path ('display_tasks') }}">Liste des taches</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path ('add_task') }}">Ajouter une tache</a>
+                </li>
+
+                {% elseif is_granted('ROLE_USER') %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path ('display_user_tasks') }}">Mes taches</a>
+                </li>
+
+                {% endif %}
+
+
+            </ul>
+            <form class="d-flex">
+
+
+                {% if is_granted('ROLE_USER') %}
+                    <span><p>{{ app.user.firstname }}</p></span>
+                    <a class="dropdown-item" href="{{ path ('app_logout') }}">Se déconnecter</a>
+                {% else %}
+                    <a class="dropdown-item" href="{{ path ('app_login') }}">Se connecter</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</nav>
